@@ -8,6 +8,9 @@ import com.clinic.patientapp.models.ShiftDto
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class PatientViewModel : ViewModel() {
 
@@ -54,12 +57,12 @@ class PatientViewModel : ViewModel() {
     fun uploadReceipt(visitId: String, imageBytes: ByteArray, transactionId: String) {
         viewModelScope.launch {
             try {
-                val mediaTypeImg = okhttp3.MediaType.Companion.toMediaTypeOrNull("image/jpeg")
-                val requestBody = okhttp3.RequestBody.Companion.toRequestBody(imageBytes, mediaTypeImg)
-                val multipartBody = okhttp3.MultipartBody.Part.createFormData("receiptImage", "receipt.jpg", requestBody)
+                val mediaTypeImg = "image/jpeg".toMediaTypeOrNull()
+                val requestBody = imageBytes.toRequestBody(mediaTypeImg)
+                val multipartBody = MultipartBody.Part.createFormData("receiptImage", "receipt.jpg", requestBody)
                 
-                val mediaTypeText = okhttp3.MediaType.Companion.toMediaTypeOrNull("text/plain")
-                val transIdBody = okhttp3.RequestBody.Companion.toRequestBody(transactionId.toByteArray(), mediaTypeText)
+                val mediaTypeText = "text/plain".toMediaTypeOrNull()
+                val transIdBody = transactionId.toRequestBody(mediaTypeText)
                 
                 val response = RetrofitClient.apiService.uploadPaymentReceipt(visitId, multipartBody, transIdBody)
                 if (response.isSuccessful) {
