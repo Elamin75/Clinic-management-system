@@ -91,11 +91,12 @@ fun AppNavHost(
             PaymentScreen(
                 visitId = visitId,
                 viewModel = patientViewModel,
-                onPaymentSubmitted = { navController.navigate("queue_tracker") }
+                onPaymentUploaded = { navController.navigate("queue_tracker/$visitId") }
             )
         }
-        composable("queue_tracker") {
-            QueueTrackerScreen(viewModel = patientViewModel)
+        composable("queue_tracker/{visitId}") { backStackEntry ->
+            val visitId = backStackEntry.arguments?.getString("visitId") ?: ""
+            QueueTrackerScreen(visitId = visitId)
         }
     }
 }
