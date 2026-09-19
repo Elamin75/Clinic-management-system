@@ -1,0 +1,15 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+.vs/
+
+# Android
+*.iml
+.gradle/
+local.properties
+/.idea/
+.DS_Store
+build/
+app/build/
