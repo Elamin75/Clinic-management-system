@@ -37,5 +37,6 @@ data class DoctorDto(
     val bio: String,
     val rating: Double,
     val reviewCount: Int,
-    val clinicLocation: String
+    val clinicLocation: String,
+    val imageUrl: String
 )

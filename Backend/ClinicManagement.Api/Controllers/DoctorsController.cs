@@ -27,7 +27,8 @@ namespace ClinicManagement.Api.Controllers
                 bio = "Passionate about healthcare and providing compassionate care to all patients.",
                 rating = 4.8,
                 reviewCount = 1200,
-                clinicLocation = "NYC Medical Center"
+                clinicLocation = "NYC Medical Center",
+                imageUrl = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=300&h=300"
             }).ToList();
 
             return Ok(doctors);

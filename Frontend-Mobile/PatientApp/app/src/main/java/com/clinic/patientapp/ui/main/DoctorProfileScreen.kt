@@ -44,7 +44,10 @@ fun DoctorProfileScreen(
             modifier = Modifier.fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            Box(
+            coil.compose.AsyncImage(
+                model = doctor.imageUrl,
+                contentDescription = "Doctor Profile",
+                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                 modifier = Modifier
                     .size(120.dp)
                     .clip(CircleShape)

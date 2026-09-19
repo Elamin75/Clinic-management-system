@@ -135,7 +135,10 @@ fun DoctorCard(doctor: DoctorDto, onClick: () -> Unit) {
             .clickable { onClick() }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Box(
+            coil.compose.AsyncImage(
+                model = doctor.imageUrl,
+                contentDescription = "Doctor Profile Picture",
+                contentScale = androidx.compose.ui.layout.ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(120.dp)
