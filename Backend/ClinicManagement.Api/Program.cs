@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 // Mock connection string for migrations (in reality this would be in appsettings.json)
 builder.Configuration["ConnectionStrings:DefaultConnection"] = "Host=localhost;Database=ClinicDb;Username=postgres;Password=postgres";
@@ -21,30 +20,20 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+app.MapControllers();
 
-var summaries = new[]
+using (var scope = app.Services.CreateScope())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var context = scope.ServiceProvider.GetRequiredService<ClinicManagement.Infrastructure.Persistence.ApplicationDbContext>();
+    context.Database.EnsureCreated(); // Or Migrate()
+    
+    if (!System.Linq.Enumerable.Any(context.DoctorShifts))
+    {
+        var docId = Guid.NewGuid();
+        context.DoctorShifts.Add(new ClinicManagement.Domain.Entities.DoctorShift(docId, DateTime.UtcNow, "Morning Shift (Seeded)", new TimeSpan(8, 0, 0), new TimeSpan(14, 0, 0), 50));
+        context.DoctorShifts.Add(new ClinicManagement.Domain.Entities.DoctorShift(docId, DateTime.UtcNow, "Evening Shift (Seeded)", new TimeSpan(16, 0, 0), new TimeSpan(22, 0, 0), 50));
+        context.SaveChanges();
+    }
+}
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
