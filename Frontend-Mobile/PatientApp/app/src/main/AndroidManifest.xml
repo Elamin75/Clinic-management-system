@@ -10,6 +10,7 @@
         android:allowBackup="true"
         android:label="Clinic Patient App"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@android:style/Theme.Material.Light">
         <activity
             android:name=".MainActivity"
