@@ -54,12 +54,12 @@ class PatientViewModel : ViewModel() {
     fun uploadReceipt(visitId: String, imageBytes: ByteArray, transactionId: String) {
         viewModelScope.launch {
             try {
-                val mediaTypeImg = okhttp3.MediaType.parse("image/jpeg")
-                val requestBody = okhttp3.RequestBody.create(mediaTypeImg, imageBytes)
+                val mediaTypeImg = okhttp3.MediaType.Companion.toMediaTypeOrNull("image/jpeg")
+                val requestBody = okhttp3.RequestBody.Companion.toRequestBody(imageBytes, mediaTypeImg)
                 val multipartBody = okhttp3.MultipartBody.Part.createFormData("receiptImage", "receipt.jpg", requestBody)
                 
-                val mediaTypeText = okhttp3.MediaType.parse("text/plain")
-                val transIdBody = okhttp3.RequestBody.create(mediaTypeText, transactionId)
+                val mediaTypeText = okhttp3.MediaType.Companion.toMediaTypeOrNull("text/plain")
+                val transIdBody = okhttp3.RequestBody.Companion.toRequestBody(transactionId.toByteArray(), mediaTypeText)
                 
                 val response = RetrofitClient.apiService.uploadPaymentReceipt(visitId, multipartBody, transIdBody)
                 if (response.isSuccessful) {
