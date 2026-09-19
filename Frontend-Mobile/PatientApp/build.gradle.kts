@@ -9,9 +9,4 @@ buildscript {
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// allprojects block removed because dependencyResolutionManagement handles it in settings.gradle.kts
