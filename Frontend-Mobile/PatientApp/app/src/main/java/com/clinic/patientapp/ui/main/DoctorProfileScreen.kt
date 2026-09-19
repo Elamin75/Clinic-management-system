@@ -21,6 +21,10 @@ import com.clinic.patientapp.models.DoctorDto
 import com.clinic.patientapp.theme.*
 import com.clinic.patientapp.ui.PatientViewModel
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
+// ... (in DoctorProfileScreen) ...
 @Composable
 fun DoctorProfileScreen(
     doctor: DoctorDto,
@@ -97,14 +101,14 @@ fun DoctorProfileScreen(
                         colors = CardDefaults.cardColors(containerColor = SurfaceWhite)
                     ) {
                         Column(modifier = Modifier.padding(24.dp)) {
-                            Text(text = "${shift.shiftName} (Today)", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+                            Text(text = "${shift.shiftName} ${stringResource(R.string.today)}", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.height(8.dp))
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(text = "🕘 ${shift.startTime} - ${shift.endTime}", style = MaterialTheme.typography.bodyLarge)
-                                Text(text = "👥 Queue: ${shift.currentQueueSize} Patients", style = MaterialTheme.typography.bodyLarge)
+                                Text(text = "👥 ${stringResource(R.string.queue)} ${shift.currentQueueSize} ${stringResource(R.string.patients)}", style = MaterialTheme.typography.bodyLarge)
                             }
                             Spacer(modifier = Modifier.height(16.dp))
                             Button(
@@ -112,7 +116,7 @@ fun DoctorProfileScreen(
                                 modifier = Modifier.fillMaxWidth().height(50.dp),
                                 colors = ButtonDefaults.buttonColors(containerColor = PrimaryTeal)
                             ) {
-                                Text("Book Queue Slot")
+                                Text(stringResource(R.string.book_queue_slot))
                             }
                         }
                     }

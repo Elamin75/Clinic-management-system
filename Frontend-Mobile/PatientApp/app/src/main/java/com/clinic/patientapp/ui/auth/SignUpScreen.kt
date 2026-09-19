@@ -11,6 +11,9 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.clinic.patientapp.theme.PrimaryTeal
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
 @Composable
 fun SignUpScreen(
     onSignUpSuccess: () -> Unit,
@@ -30,7 +33,7 @@ fun SignUpScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Create Account",
+            text = stringResource(R.string.create_account),
             style = MaterialTheme.typography.headlineLarge,
             color = PrimaryTeal
         )
@@ -40,7 +43,7 @@ fun SignUpScreen(
         OutlinedTextField(
             value = name,
             onValueChange = { name = it },
-            label = { Text("Full Name") },
+            label = { Text(stringResource(R.string.full_name)) },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
         )
@@ -50,7 +53,7 @@ fun SignUpScreen(
         OutlinedTextField(
             value = phone,
             onValueChange = { phone = it },
-            label = { Text("Phone Number") },
+            label = { Text(stringResource(R.string.phone_number)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
@@ -61,7 +64,7 @@ fun SignUpScreen(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { Text(stringResource(R.string.password)) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             modifier = Modifier.fillMaxWidth(),
@@ -87,14 +90,14 @@ fun SignUpScreen(
             if (isLoading) {
                 CircularProgressIndicator(color = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(24.dp))
             } else {
-                Text("Sign Up", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.sign_up), style = MaterialTheme.typography.titleLarge)
             }
         }
         
         Spacer(modifier = Modifier.height(24.dp))
         
         TextButton(onClick = onNavigateToLogin) {
-            Text("Already have an account? Log In", color = PrimaryTeal)
+            Text(stringResource(R.string.have_account), color = PrimaryTeal)
         }
     }
 }

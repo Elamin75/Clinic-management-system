@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Clinic Patient App</string>
+    <string name="welcome_title">Welcome to Medicare</string>
+    <string name="welcome_subtitle">Log in or sign up to manage your health journey.</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="no_account">Don\'t have an account? Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="have_account">Already have an account? Log In</string>
+    <string name="app_brand">ClinicaCare</string>
+    <string name="search_hint">Find a doctor, clinic, or specialization...</string>
+    <string name="categories">Categories</string>
+    <string name="explore_specializations">Explore Specializations</string>
+    <string name="cardiology">Cardiology</string>
+    <string name="dentistry">Dentistry</string>
+    <string name="pediatrics">Pediatrics</string>
+    <string name="top_rated">Top Rated Doctors</string>
+    <string name="see_all">See All</string>
+    <string name="reviews">Reviews</string>
+    <string name="book_now">Book Now</string>
+    <string name="book_queue_slot">Book Queue Slot</string>
+    <string name="queue">Queue:</string>
+    <string name="patients">Patients</string>
+    <string name="today">(Today)</string>
+    <string name="upload_receipt_title">Upload Bankak Receipt</string>
+    <string name="payment_instruction">Please transfer the consultation fee to Account: 1234567</string>
+    <string name="transaction_id">16-digit Transaction ID</string>
+    <string name="select_image">Select Receipt Image</string>
+    <string name="image_selected">Image Selected!</string>
+    <string name="submit_payment">Submit Payment</string>
+    <string name="queue_title">Your Queue Number</string>
+    <string name="waiting_verification">Waiting for Registrar to verify payment...</string>
+    <string name="payment_confirmed">Payment Confirmed! You are in the queue.</string>
+</resources>

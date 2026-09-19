@@ -19,6 +19,10 @@ import androidx.compose.ui.unit.dp
 import com.clinic.patientapp.models.DoctorDto
 import com.clinic.patientapp.theme.*
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
+// ... (in HomeScreen) ...
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -38,7 +42,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(16.dp))
         
         Text(
-            text = "ClinicaCare",
+            text = stringResource(R.string.app_brand),
             style = MaterialTheme.typography.headlineMedium,
             color = PrimaryTeal
         )
@@ -48,7 +52,7 @@ fun HomeScreen(
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
-            placeholder = { Text("Find a doctor, clinic, or specialization...") },
+            placeholder = { Text(stringResource(R.string.search_hint)) },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(24.dp),
@@ -61,11 +65,11 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "Categories",
+            text = stringResource(R.string.categories),
             style = MaterialTheme.typography.titleLarge
         )
         Text(
-            text = "Explore Specializations",
+            text = stringResource(R.string.explore_specializations),
             style = MaterialTheme.typography.headlineMedium
         )
         
@@ -75,9 +79,9 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            CategoryCard("Cardiology", CardCardiology)
-            CategoryCard("Dentistry", CardDentistry)
-            CategoryCard("Pediatrics", CardPediatrics)
+            CategoryCard(stringResource(R.string.cardiology), CardCardiology)
+            CategoryCard(stringResource(R.string.dentistry), CardDentistry)
+            CategoryCard(stringResource(R.string.pediatrics), CardPediatrics)
         }
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -88,12 +92,12 @@ fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Top Rated Doctors",
+                text = stringResource(R.string.top_rated),
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
             TextButton(onClick = { }) {
-                Text("See All", color = PrimaryTeal)
+                Text(stringResource(R.string.see_all), color = PrimaryTeal)
             }
         }
 
@@ -155,7 +159,7 @@ fun DoctorCard(doctor: DoctorDto, onClick: () -> Unit) {
             Row {
                 Text(text = "★ ${doctor.rating}", color = androidx.compose.ui.graphics.Color(0xFFFFB300))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text(text = "${doctor.reviewCount} Reviews", color = TextSecondary, style = MaterialTheme.typography.bodyMedium)
+                Text(text = "${doctor.reviewCount} ${stringResource(R.string.reviews)}", color = TextSecondary, style = MaterialTheme.typography.bodyMedium)
             }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
@@ -163,7 +167,7 @@ fun DoctorCard(doctor: DoctorDto, onClick: () -> Unit) {
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(containerColor = PrimaryTeal)
             ) {
-                Text("Book Now")
+                Text(stringResource(R.string.book_now))
             }
         }
     }

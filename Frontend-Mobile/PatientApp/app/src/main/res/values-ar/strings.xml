@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تطبيق عيادة المريض</string>
+    <string name="welcome_title">مرحباً بك في ميديكير</string>
+    <string name="welcome_subtitle">سجل الدخول أو أنشئ حساباً لإدارة رحلتك الصحية.</string>
+    <string name="phone_number">رقم الهاتف</string>
+    <string name="password">كلمة المرور</string>
+    <string name="log_in">تسجيل الدخول</string>
+    <string name="no_account">ليس لديك حساب؟ سجل الآن</string>
+    <string name="create_account">إنشاء حساب</string>
+    <string name="full_name">الاسم الكامل</string>
+    <string name="sign_up">تسجيل</string>
+    <string name="have_account">لديك حساب بالفعل؟ سجل الدخول</string>
+    <string name="app_brand">كلينيكا كير</string>
+    <string name="search_hint">ابحث عن طبيب، عيادة، أو تخصص...</string>
+    <string name="categories">الفئات</string>
+    <string name="explore_specializations">استكشف التخصصات</string>
+    <string name="cardiology">قلبية</string>
+    <string name="dentistry">أسنان</string>
+    <string name="pediatrics">أطفال</string>
+    <string name="top_rated">الأطباء الأعلى تقييماً</string>
+    <string name="see_all">عرض الكل</string>
+    <string name="reviews">مراجعات</string>
+    <string name="book_now">احجز الآن</string>
+    <string name="book_queue_slot">احجز دورك</string>
+    <string name="queue">الانتظار:</string>
+    <string name="patients">مرضى</string>
+    <string name="today">(اليوم)</string>
+    <string name="upload_receipt_title">رفع إيصال بنكك</string>
+    <string name="payment_instruction">الرجاء تحويل رسوم الاستشارة إلى الحساب: 1234567</string>
+    <string name="transaction_id">رقم المعاملة (16 رقم)</string>
+    <string name="select_image">اختر صورة الإيصال</string>
+    <string name="image_selected">تم اختيار الصورة!</string>
+    <string name="submit_payment">تأكيد الدفع</string>
+    <string name="queue_title">رقمك في قائمة الانتظار</string>
+    <string name="waiting_verification">في انتظار التحقق من الدفع...</string>
+    <string name="payment_confirmed">تم تأكيد الدفع! أنت الآن في قائمة الانتظار.</string>
+</resources>

@@ -12,6 +12,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.clinic.patientapp.theme.PrimaryTeal
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
 @Composable
 fun LoginScreen(
     onLoginSuccess: () -> Unit,
@@ -30,7 +33,7 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Welcome to Medicare",
+            text = stringResource(R.string.welcome_title),
             style = MaterialTheme.typography.headlineLarge,
             color = PrimaryTeal,
             textAlign = TextAlign.Center
@@ -39,7 +42,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(8.dp))
         
         Text(
-            text = "Log in or sign up to manage your health journey.",
+            text = stringResource(R.string.welcome_subtitle),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center
         )
@@ -49,7 +52,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = phone,
             onValueChange = { phone = it },
-            label = { Text("Phone Number") },
+            label = { Text(stringResource(R.string.phone_number)) },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
@@ -60,7 +63,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
+            label = { Text(stringResource(R.string.password)) },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             modifier = Modifier.fillMaxWidth(),
@@ -88,14 +91,14 @@ fun LoginScreen(
             if (isLoading) {
                 CircularProgressIndicator(color = MaterialTheme.colorScheme.onPrimary, modifier = Modifier.size(24.dp))
             } else {
-                Text("Log In", style = MaterialTheme.typography.titleLarge)
+                Text(stringResource(R.string.log_in), style = MaterialTheme.typography.titleLarge)
             }
         }
         
         Spacer(modifier = Modifier.height(24.dp))
         
         TextButton(onClick = onNavigateToSignUp) {
-            Text("Don't have an account? Sign Up", color = PrimaryTeal)
+            Text(stringResource(R.string.no_account), color = PrimaryTeal)
         }
     }
 }

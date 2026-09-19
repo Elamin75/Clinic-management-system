@@ -11,6 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
 @Composable
 fun PaymentScreen(
     visitId: String,
@@ -30,16 +33,16 @@ fun PaymentScreen(
     Column(
         modifier = Modifier.padding(16.dp).fillMaxSize()
     ) {
-        Text(text = "Upload Bankak Receipt", style = MaterialTheme.typography.headlineMedium)
+        Text(text = stringResource(R.string.upload_receipt_title), style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(16.dp))
         
-        Text(text = "Please transfer the consultation fee to Account: 1234567")
+        Text(text = stringResource(R.string.payment_instruction))
         Spacer(modifier = Modifier.height(16.dp))
         
         OutlinedTextField(
             value = transactionId,
             onValueChange = { transactionId = it },
-            label = { Text("16-digit Transaction ID") },
+            label = { Text(stringResource(R.string.transaction_id)) },
             modifier = Modifier.fillMaxWidth()
         )
         
@@ -49,7 +52,7 @@ fun PaymentScreen(
             onClick = { imagePicker.launch("image/*") },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(if (selectedImageUri == null) "Select Receipt Image" else "Image Selected!")
+            Text(if (selectedImageUri == null) stringResource(R.string.select_image) else stringResource(R.string.image_selected))
         }
         
         Spacer(modifier = Modifier.weight(1f))
@@ -67,7 +70,7 @@ fun PaymentScreen(
             modifier = Modifier.fillMaxWidth(),
             enabled = transactionId.isNotEmpty() && selectedImageUri != null
         ) {
-            Text("Submit Payment")
+            Text(stringResource(R.string.submit_payment))
         }
     }
 }

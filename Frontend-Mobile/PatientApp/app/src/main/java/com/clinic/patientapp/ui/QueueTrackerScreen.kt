@@ -7,13 +7,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+import androidx.compose.ui.res.stringResource
+import com.clinic.patientapp.R
+
 @Composable
 fun QueueTrackerScreen(
     visitId: String
 ) {
     // In reality, this would observe a ViewModel tied to FCM / SignalR
     var queueNumber by remember { mutableStateOf<Int?>(15) }
-    var statusMessage by remember { mutableStateOf("Payment Confirmed! You are in the queue.") }
+    
+    val defaultStatusMessage = stringResource(R.string.payment_confirmed)
+    var statusMessage by remember { mutableStateOf(defaultStatusMessage) }
 
     Column(
         modifier = Modifier.padding(16.dp).fillMaxSize(),
@@ -21,7 +26,7 @@ fun QueueTrackerScreen(
         verticalArrangement = Arrangement.Center
     ) {
         if (queueNumber != null) {
-            Text(text = "Your Queue Number", style = MaterialTheme.typography.titleLarge)
+            Text(text = stringResource(R.string.queue_title), style = MaterialTheme.typography.titleLarge)
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "#$queueNumber", 
@@ -31,7 +36,7 @@ fun QueueTrackerScreen(
         } else {
             CircularProgressIndicator()
             Spacer(modifier = Modifier.height(16.dp))
-            Text("Waiting for Registrar to verify payment...")
+            Text(stringResource(R.string.waiting_verification))
         }
 
         Spacer(modifier = Modifier.height(32.dp))
