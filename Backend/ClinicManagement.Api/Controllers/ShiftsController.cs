@@ -20,17 +20,25 @@ namespace ClinicManagement.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAvailableShifts([FromQuery] Guid doctorId, [FromQuery] DateTime date)
+        public IActionResult GetAvailableShifts([FromQuery] string doctorId, [FromQuery] string date)
         {
-            // For testing, just return all active shifts
-            var shifts = System.Linq.Enumerable.Select(_context.DoctorShifts, s => new
+            var query = _context.DoctorShifts.AsQueryable();
+
+            if (!string.IsNullOrEmpty(doctorId) && Guid.TryParse(doctorId, out var docId))
+            {
+                query = query.Where(s => s.DoctorId == docId);
+            }
+
+            // For testing, return active shifts
+            var shifts = query.Select(s => new
             {
                 ShiftId = s.Id,
+                DoctorId = s.DoctorId,
                 ShiftName = s.ShiftName,
                 StartTime = s.StartTime.ToString(@"hh\:mm"),
                 EndTime = s.EndTime.ToString(@"hh\:mm"),
                 CurrentQueueSize = s.NextAvailableQueueNumber - 1
-            });
+            }).ToList();
             return Ok(shifts);
         }
 

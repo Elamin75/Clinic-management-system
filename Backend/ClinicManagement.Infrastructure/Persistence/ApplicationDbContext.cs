@@ -22,6 +22,7 @@ namespace ClinicManagement.Infrastructure.Persistence
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<DoctorShift> DoctorShifts => Set<DoctorShift>();
         public DbSet<Visit> Visits => Set<Visit>();
+        public DbSet<Doctor> Doctors => Set<Doctor>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

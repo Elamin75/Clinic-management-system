@@ -10,6 +10,7 @@ namespace ClinicManagement.Application.Common.Interfaces
         DbSet<Patient> Patients { get; }
         DbSet<DoctorShift> DoctorShifts { get; }
         DbSet<Visit> Visits { get; }
+        DbSet<Doctor> Doctors { get; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }

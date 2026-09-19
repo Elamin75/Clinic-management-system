@@ -15,6 +15,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
+    @GET("api/doctors")
+    suspend fun getDoctors(): Response<List<DoctorDto>>
+
     @GET("api/shifts")
     suspend fun getAvailableShifts(
         @Query("doctorId") doctorId: String,
