@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.clinic.patientapp.ui.BookingScreen
 import com.clinic.patientapp.ui.PaymentScreen
 import com.clinic.patientapp.ui.QueueTrackerScreen
+import com.clinic.patientapp.ui.PatientViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
