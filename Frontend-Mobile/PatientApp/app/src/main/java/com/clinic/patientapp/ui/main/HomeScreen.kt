@@ -3,6 +3,7 @@ package com.clinic.patientapp.ui.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,11 +26,13 @@ fun HomeScreen(
     onDoctorSelected: (String) -> Unit
 ) {
     var searchQuery by remember { mutableStateOf("") }
+    val scrollState = androidx.compose.foundation.rememberScrollState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BackgroundWhite)
+            .verticalScroll(scrollState)
             .padding(16.dp)
     ) {
         Spacer(modifier = Modifier.height(16.dp))
