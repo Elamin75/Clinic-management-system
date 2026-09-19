@@ -21,9 +21,13 @@ namespace ClinicManagement.Api.Controllers
         {
             var doctors = _context.Doctors.Select(d => new
             {
-                Id = d.Id,
-                Name = d.Name,
-                Specialty = d.Specialty
+                id = d.Id,
+                name = d.Name,
+                specialization = d.Specialty,
+                bio = "Passionate about healthcare and providing compassionate care to all patients.",
+                rating = 4.8,
+                reviewCount = 1200,
+                clinicLocation = "NYC Medical Center"
             }).ToList();
 
             return Ok(doctors);
